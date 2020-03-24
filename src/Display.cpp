@@ -6,10 +6,8 @@
 
 
 
-Display::Display (size_t width, size_t height, const char* name)
+Display::Display (const size_t width, const size_t height, const char* name) : m_width(width), m_height(height)
 {
-  m_width = width;
-  m_height = height;
   m_name = name;
 
   glfwInit();
