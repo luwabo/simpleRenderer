@@ -6,6 +6,7 @@ class Display
 {
 private:
   GLFWwindow* m_window;
+  bool m_close;
 public:
   const size_t m_width, m_height;
   const char* m_name;
@@ -16,4 +17,5 @@ public:
 
   bool ShouldClose ();
   void Present ();
+  void RequestClose ();
 };

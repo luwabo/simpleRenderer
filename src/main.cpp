@@ -29,6 +29,10 @@ int main ()
 
   std::cout << glGetString(GL_VERSION) << std::endl;
 
+  glFrontFace(GL_CCW);
+  glCullFace(GL_BACK);
+  glEnable(GL_CULL_FACE);
+
   vertex verticiesStack [] =
     {
      {0.0f, 0.5f, 0.4f},
@@ -57,10 +61,15 @@ int main ()
 
     Input::Update();
 
+    if (Input::IsKeyPressed(GLFW_KEY_Q)) {
+      display.RequestClose();
+    }
+
     if (Input::IsKeyPressed(GLFW_KEY_W)) {
       glm::vec3 tmp = glm::vec3(0.0f, 0.0f, 0.02f);
       camera.MoveAlongDir(tmp);
     }
+
 
     if (Input::IsKeyPressed(GLFW_KEY_A)) {
       glm::vec3 tmp = glm::vec3(0.02f, 0.0f, 0.0f);

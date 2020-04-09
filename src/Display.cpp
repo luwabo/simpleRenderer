@@ -10,6 +10,8 @@ Display::Display (const size_t width, const size_t height, const char* name) : m
 {
   m_name = name;
 
+  m_close = false;
+
   glfwInit();
   m_window = glfwCreateWindow(width, height, name, NULL, NULL);
   glfwMakeContextCurrent(m_window);
@@ -26,9 +28,13 @@ Display::~Display ()
 
 bool Display::ShouldClose ()
 {
-  return glfwWindowShouldClose(m_window);
+  return glfwWindowShouldClose(m_window) || m_close;
 }
 
+void Display::RequestClose ()
+{
+  m_close = true;
+}
 
 void Display::Present()
 {
